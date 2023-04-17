@@ -12,7 +12,7 @@ export const Layout: React.FC<Props> = ({ children }) => {
     <main className={s.root}>
       <div className={s.container}>
         <Header />
-        {children}
+        <div className={s.content}>{children}</div>
       </div>
       <Footer className={s.footer} />
     </main>
