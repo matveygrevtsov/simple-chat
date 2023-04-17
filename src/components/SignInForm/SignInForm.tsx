@@ -16,7 +16,7 @@ export const SignInForm: React.FC<Props> = ({
   onSubmit,
 }) => {
   const { submit, register, formState } = useSignInForm(onSubmit);
-  const { SignUpForm } = texts.SignUpPage;
+  const { SignInForm } = texts.SignInPage;
 
   return (
     <form
@@ -25,21 +25,21 @@ export const SignInForm: React.FC<Props> = ({
       className={cn(className, s.root)}
     >
       <div>
-        <label className={s.label}>{SignUpForm.labels.email}</label>
+        <label className={s.label}>{SignInForm.labels.email}</label>
         <input {...register("email")} type="email" className={s.input} />
         {formState.errors.email && (
           <span className={s.error}>{formState.errors.email.message}</span>
         )}
       </div>
       <div>
-        <label className={s.label}>{SignUpForm.labels.password}</label>
+        <label className={s.label}>{SignInForm.labels.password}</label>
         <input {...register("password")} type="password" className={s.input} />
         {formState.errors.password && (
           <span className={s.error}>{formState.errors.password.message}</span>
         )}
       </div>
       <button disabled={!formState.isValid} className={s.submitButton}>
-        {SignUpForm.submitButtonText}
+        {SignInForm.submitButtonText}
       </button>
     </form>
   );
