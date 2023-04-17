@@ -12,7 +12,7 @@ export default function SignUpPage() {
       <SignUpForm
         onStartTyping={console.log}
         onSubmit={console.log}
-        className={s.signUpForm}
+        className={s.form}
       />
     </>
   );
