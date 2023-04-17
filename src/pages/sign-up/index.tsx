@@ -1,5 +1,5 @@
 import { texts } from "@/texts";
-import { SignUpForm } from "./components/SignUpForm/SignUpForm";
+import { SignUpForm } from "@/components/SignUpForm/SignUpForm";
 
 import s from "./SignUpPage.module.css";
 
