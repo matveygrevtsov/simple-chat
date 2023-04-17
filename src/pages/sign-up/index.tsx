@@ -1,4 +1,4 @@
-import { texts } from "@/texts";
+import { texts } from "@/constants/texts";
 import { SignUpForm } from "@/components/SignUpForm/SignUpForm";
 
 import s from "./SignUpPage.module.css";
