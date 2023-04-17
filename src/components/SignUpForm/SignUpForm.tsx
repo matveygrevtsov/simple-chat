@@ -1,5 +1,5 @@
+import { texts } from "@/constants/texts";
 import { useSignUpForm } from "./useSignUpForm";
-import { texts } from "@/texts";
 import cn from "classnames";
 
 import s from "./SignUpForm.module.css";

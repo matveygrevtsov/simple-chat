@@ -1,6 +1,6 @@
 export const texts = {
   SignUpPage: {
-    title: "Зарегистрироваться",
+    title: "Регистрация",
     alreadyHasAccountText: "Уже есть аккаунт ? Авторизуйтесь.",
     SignUpForm: {
       labels: {

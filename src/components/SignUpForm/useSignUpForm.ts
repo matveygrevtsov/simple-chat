@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { object, string, ref } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { texts } from "@/texts";
+import { texts } from "@/constants/texts";
 
 interface FormValues {
   email: string;
