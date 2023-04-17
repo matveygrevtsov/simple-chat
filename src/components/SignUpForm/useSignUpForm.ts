@@ -11,16 +11,15 @@ interface FormValues {
 
 const PASSWORD_MIN_LENGTH = 6;
 
+const { validationErrors } = texts.SignUpPage.SignUpForm;
+
 const formSchema = object().shape({
   email: string()
-    .required(texts.SignUpPage.SignUpForm.validationErrors.emptyEmail)
-    .email(texts.SignUpPage.SignUpForm.validationErrors.invalidEmail),
+    .required(validationErrors.emptyEmail)
+    .email(validationErrors.invalidEmail),
   password: string()
-    .required(texts.SignUpPage.SignUpForm.validationErrors.emptyPassword)
-    .min(
-      PASSWORD_MIN_LENGTH,
-      texts.SignUpPage.SignUpForm.validationErrors.shortPassword
-    ),
+    .required(validationErrors.emptyPassword)
+    .min(PASSWORD_MIN_LENGTH, validationErrors.shortPassword),
   repeatPassword: string().oneOf(
     [ref("password")],
     texts.SignUpPage.SignUpForm.validationErrors.passwordsMismatch

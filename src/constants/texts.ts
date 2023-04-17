@@ -12,10 +12,26 @@ export const texts = {
         emptyEmail: "Email не указан",
         invalidEmail: "Невалидный email",
         emptyPassword: "Пароль не указан",
-        shortPassword: "Длина пароля должна быть не менее 4 символа",
+        shortPassword: "Слишком короткий пароль",
         passwordsMismatch: "Пароли не совпадают",
       },
       submitButtonText: "Зарегистрироваться",
+    },
+  },
+  SignInPage: {
+    title: "Авторизоваться",
+    SignInForm: {
+      labels: {
+        email: "Почта",
+        password: "Пароль",
+      },
+      validationErrors: {
+        emptyEmail: "Email не указан",
+        invalidEmail: "Невалидный email",
+        emptyPassword: "Пароль не указан",
+        invalidPassword: "Невалидный пароль",
+      },
+      submitButtonText: "Войти",
     },
   },
 };
