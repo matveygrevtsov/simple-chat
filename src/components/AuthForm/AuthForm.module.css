@@ -1,0 +1,15 @@
+.root {
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+}
+
+.head {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-around;
+}
+
+.switchAuthScreenButton {
+  cursor: pointer;
+}

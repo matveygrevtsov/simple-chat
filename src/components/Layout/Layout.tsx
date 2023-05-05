@@ -1,4 +1,3 @@
-import { Header } from "../Header/Header";
 import { Footer } from "../Footer/Footer";
 
 import s from "./Layout.module.css";
@@ -11,7 +10,6 @@ export const Layout: React.FC<Props> = ({ children }) => {
   return (
     <main className={s.root}>
       <div className={s.container}>
-        <Header />
         <div className={s.content}>{children}</div>
       </div>
       <Footer className={s.footer} />

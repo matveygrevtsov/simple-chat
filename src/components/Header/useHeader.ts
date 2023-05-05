@@ -1,4 +1,3 @@
-import { navigation } from "@/constants/navigation";
 import { useRouter } from "next/router";
 
 export interface Route {
@@ -11,10 +10,7 @@ export const useHeader = () => {
   const { pathname } = useRouter();
 
   function getRoutes(): Route[] {
-    return navigation.unauthorized.map((navLink) => ({
-      ...navLink,
-      isActive: navLink.path === pathname,
-    }));
+    return [];
   }
 
   return { routes: getRoutes() };
