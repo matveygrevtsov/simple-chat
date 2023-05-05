@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
-import { object, string, ref } from "yup";
+import { object, string } from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { texts } from "@/constants/texts";
+import { UserCredentials } from "@/store/components/user/types";
 
 interface FormValues {
   email: string;
@@ -22,7 +23,7 @@ const formSchema = object().shape({
 });
 
 export const useSignInForm = (
-  onSubmit: (email: string, password: string) => void
+  onSubmit: (userCredentials: UserCredentials) => void
 ) => {
   const { register, handleSubmit, formState } = useForm<FormValues>({
     mode: "onTouched",
@@ -31,7 +32,7 @@ export const useSignInForm = (
   });
 
   const submit = handleSubmit(({ email, password }: FormValues) =>
-    onSubmit(email, password)
+    onSubmit({ email, password })
   );
 
   return { submit, register, formState };
