@@ -1,10 +1,10 @@
 import { Routes } from "@/constants/navigation";
+import { useRedirect } from "@/hooks/useRedirect";
 import { UserStatus } from "@/store/components/user/types";
 import { useAppSelector } from "@/store/store";
-import { useRouter } from "next/router";
 
 export default function () {
-  const router = useRouter();
+  const { redirect } = useRedirect();
   const userStore = useAppSelector((state) => state.userStore);
 
   if (userStore.status === UserStatus.Client) {
@@ -16,7 +16,5 @@ export default function () {
   }
 
   // Если юзер загрузился, но не является клиентом - редиректим его с этой страницы.
-  if (typeof window !== "undefined") {
-    router.push(Routes.MainPage);
-  }
+  redirect(Routes.MainPage);
 }

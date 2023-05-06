@@ -2,8 +2,7 @@ import { UserStatus } from "@/store/components/user/types";
 import { AuthForm } from "../AuthForm/AuthForm";
 import { useAppSelector } from "@/store/store";
 import { Routes } from "@/constants/navigation";
-import { redirect } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRedirect } from "@/hooks/useRedirect";
 
 import s from "./AuthScreen.module.css";
 
@@ -13,12 +12,12 @@ export enum AuthScreenType {
 }
 
 export function AuthScreen() {
-  const router = useRouter();
+  const { redirect } = useRedirect();
   const userStore = useAppSelector((state) => state.userStore);
 
   // Если авторизация прошла успешно - редиректим в личный кабинет.
   if (userStore.status === UserStatus.Client && typeof window !== "undefined") {
-    router.push(Routes.Me);
+    redirect(Routes.Me);
   }
 
   // Если юзер - гость, либо не смог успешно авторизоваться - отображаем форму.
