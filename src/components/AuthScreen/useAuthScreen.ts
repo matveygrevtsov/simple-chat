@@ -42,10 +42,12 @@ export function useAuthScreen() {
       })
     )
       .unwrap()
-      .then(
-        (jwt) => {},
-        (error) => {}
-      );
+      .catch((error) => {
+        setState({
+          status: AuthScreenStatus.Error,
+          errorMessage: error.message,
+        });
+      });
   }
 
   function handleSignUpFormSubmit(userCredentials: UserCredentials) {
