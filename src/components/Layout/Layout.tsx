@@ -9,9 +9,7 @@ interface Props {
 export const Layout: React.FC<Props> = ({ children }) => {
   return (
     <main className={s.root}>
-      <div className={s.container}>
-        <div className={s.content}>{children}</div>
-      </div>
+      <div className={s.container}>{children}</div>
       <Footer className={s.footer} />
     </main>
   );

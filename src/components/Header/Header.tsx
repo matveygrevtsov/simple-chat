@@ -9,8 +9,12 @@ export const Header = () => {
 
   return (
     <>
-      <HeaderMobile className={s.headerMobile} routes={routes} />
-      <HeaderDesktop className={s.headerDesktop} routes={routes} />
+      <div className={s.headerMobile}>
+        <HeaderMobile routes={routes} />
+      </div>
+      <div className={s.headerDesktop}>
+        <HeaderDesktop routes={routes} />
+      </div>
     </>
   );
 };

@@ -1,3 +1,4 @@
+import { routesForLoggedInUser } from "@/constants/navigation";
 import { useRouter } from "next/router";
 
 export interface Route {
@@ -10,7 +11,10 @@ export const useHeader = () => {
   const { pathname } = useRouter();
 
   function getRoutes(): Route[] {
-    return [];
+    return routesForLoggedInUser.map((routeConfig) => ({
+      ...routeConfig,
+      isActive: routeConfig.path === pathname,
+    }));
   }
 
   return { routes: getRoutes() };
