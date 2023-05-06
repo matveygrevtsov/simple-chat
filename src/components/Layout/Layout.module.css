@@ -8,10 +8,6 @@
   flex: 1 0 auto;
 }
 
-.content {
-  padding: 1rem;
-}
-
 .footer {
   flex-shrink: 0;
   padding-top: 3rem;

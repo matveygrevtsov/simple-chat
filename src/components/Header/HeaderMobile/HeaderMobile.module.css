@@ -12,10 +12,12 @@
   width: 2rem;
   height: 2rem;
   margin-left: auto;
+  cursor: pointer;
 }
 
 .navigation {
   list-style: none;
+  padding-bottom: 1rem;
 }
 
 .link {
@@ -26,4 +28,8 @@
 .linkActive {
   composes: link;
   color: var(--color-white);
+}
+
+.logOutButton {
+  margin-left: 1rem;
 }

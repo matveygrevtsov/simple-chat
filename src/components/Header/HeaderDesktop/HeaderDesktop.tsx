@@ -1,3 +1,4 @@
+import { LogOutButton } from "@/components/LogOutButton/LogOutButton";
 import { Route } from "../useHeader";
 import Link from "next/link";
 import cn from "classnames";
@@ -24,6 +25,7 @@ export const HeaderDesktop: React.FC<Props> = ({ routes, className }) => {
           );
         })}
       </ul>
+      <LogOutButton />
     </header>
   );
 };

@@ -1,3 +1,4 @@
+import { LogOutButton } from "@/components/LogOutButton/LogOutButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useHeaderMobile } from "./useHeaderMobile";
@@ -38,6 +39,9 @@ export const HeaderMobile: React.FC<Props> = ({ routes, className }) => {
               </li>
             );
           })}
+          <li>
+            <LogOutButton className={s.logOutButton} />
+          </li>
         </ul>
       )}
     </header>

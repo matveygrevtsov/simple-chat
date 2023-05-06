@@ -1,0 +1,9 @@
+.root {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  padding-left: 0.5rem;
+}
