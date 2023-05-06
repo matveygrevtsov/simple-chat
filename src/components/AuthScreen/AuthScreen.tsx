@@ -16,7 +16,7 @@ export function AuthScreen() {
   const userStore = useAppSelector((state) => state.userStore);
 
   // Если авторизация прошла успешно - редиректим в личный кабинет.
-  if (userStore.status === UserStatus.Client && typeof window !== "undefined") {
+  if (userStore.status === UserStatus.Client) {
     redirect(Routes.Me);
   }
 
