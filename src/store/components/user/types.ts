@@ -9,31 +9,32 @@ export interface UserErrorData {
 }
 
 export enum UserStatus {
-  Guest = "Guest",
-  Loading = "Loading",
-  Error = "Error",
-  Client = "Client",
+  Authorized = "Authorized",
+  UnAuthorized = " UnAuthorized",
 }
 
 export type JsonWebToken = string;
 
 export type UserState =
   | {
-      status: UserStatus.Guest;
+      status: UserStatus.UnAuthorized;
     }
   | {
-      status: UserStatus.Loading;
-    }
-  | {
-      status: UserStatus.Error;
-      error: UserErrorData;
-    }
-  | {
-      status: UserStatus.Client;
+      status: UserStatus.Authorized;
       jwt: JsonWebToken;
     };
+
+export enum AuthType {
+  SignIn = "SignIn",
+  SignUp = "SignUp",
+}
 
 export interface UserCredentials {
   email: string;
   password: string;
+}
+
+export interface UserAuthData {
+  authType: AuthType;
+  userCredentials: UserCredentials;
 }

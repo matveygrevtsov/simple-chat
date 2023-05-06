@@ -1,14 +1,14 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { JsonWebToken, UserCredentials } from "./types";
+import { JsonWebToken, UserAuthData } from "./types";
 import axios from "axios";
 
-export const signInAsyncThunk = createAsyncThunk<JsonWebToken, UserCredentials>(
-  "user/sign-in",
-  async function (userCredentials: UserCredentials, thunkAPI) {
+export const authAsyncThunk = createAsyncThunk<JsonWebToken, UserAuthData>(
+  "user/sign-up",
+  async function ({ userCredentials }, thunkAPI) {
     try {
       const response = await axios<JsonWebToken>({
         method: "post",
-        url: "",
+        url: ``,
         data: userCredentials,
       });
       return response.data;
