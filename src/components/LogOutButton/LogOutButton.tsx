@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { userStoreActions } from "@/store/components/user/userSlice";
 import { useAppDispatch } from "@/store/store";
 import cn from "classnames";
 
@@ -11,7 +12,7 @@ interface Props {
 
 export function LogOutButton({ className }: Props) {
   const dispatch = useAppDispatch();
-  const handleClick = () => {};
+  const handleClick = () => dispatch(userStoreActions.logout());
 
   return (
     <button onClick={handleClick} className={cn(s.root, className)}>

@@ -1,5 +1,4 @@
 import { Header } from "@/components/Header/Header";
-import { LogOutButton } from "@/components/LogOutButton/LogOutButton";
 import { Routes } from "@/constants/navigation";
 import { useRedirect } from "@/hooks/useRedirect";
 import { UserStatus } from "@/store/components/user/types";
@@ -9,7 +8,7 @@ export default function () {
   const { redirect } = useRedirect();
   const userStore = useAppSelector((state) => state.userStore);
 
-  if (userStore.status === UserStatus.Client) {
+  if (userStore.status === UserStatus.Authorized) {
     return (
       <>
         <Header />
@@ -18,10 +17,6 @@ export default function () {
     );
   }
 
-  if (userStore.status === UserStatus.Loading) {
-    return <h1>Загрузка...</h1>;
-  }
-
-  // Если юзер загрузился, но не является клиентом - редиректим его с этой страницы.
+  // Если юзер не является клиентом - редиректим его с этой страницы.
   redirect(Routes.MainPage);
 }

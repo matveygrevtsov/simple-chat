@@ -3,6 +3,7 @@ import { AuthForm } from "../AuthForm/AuthForm";
 import { useAppSelector } from "@/store/store";
 import { Routes } from "@/constants/navigation";
 import { useRedirect } from "@/hooks/useRedirect";
+import { AuthScreenStatus, useAuthScreen } from "./useAuthScreen";
 
 import s from "./AuthScreen.module.css";
 
@@ -12,22 +13,29 @@ export enum AuthScreenType {
 }
 
 export function AuthScreen() {
+  const { state, handleSignUpFormSubmit, handleSignInFormSubmit } =
+    useAuthScreen();
   const { redirect } = useRedirect();
   const userStore = useAppSelector((state) => state.userStore);
 
-  // Если авторизация прошла успешно - редиректим в личный кабинет.
-  if (userStore.status === UserStatus.Client) {
+  // Если юзер авторизован - редиректим его с этой страницы в личный кабинет.
+  if (userStore.status === UserStatus.Authorized) {
     redirect(Routes.Me);
   }
 
-  // Если юзер - гость, либо не смог успешно авторизоваться - отображаем форму.
-  if (
-    userStore.status === UserStatus.Guest ||
-    userStore.status === UserStatus.Error
-  ) {
-    return <AuthForm />;
+  if (state.status === AuthScreenStatus.Loading) {
+    return <h2>Загрузка...</h2>;
   }
 
-  // По умолчанию отображаем прелоадер.
-  return <h2>загрузка...</h2>;
+  return (
+    <>
+      <AuthForm
+        onSignUpFormSubmit={handleSignUpFormSubmit}
+        onSignInFormSubmit={handleSignInFormSubmit}
+      />
+      {state.status === AuthScreenStatus.Error && (
+        <span>{state.errorMessage}</span>
+      )}
+    </>
+  );
 }

@@ -1,3 +1,4 @@
+import { UserCredentials } from "@/store/components/user/types";
 import { SignUpForm } from "../SignUpForm/SignUpForm";
 import { SignInForm } from "../SignInForm/SignInForm";
 import { useAuthForm } from "./useAuthForm";
@@ -9,14 +10,14 @@ export enum AuthType {
   SignUp = "SignUp",
 }
 
-export function AuthForm() {
-  const {
-    authScreenType,
-    handleClickSignUp,
-    handleClickSignIn,
-    handleSignInFormSubmit,
-    handleSignUpFormSubmit,
-  } = useAuthForm();
+interface Props {
+  onSignUpFormSubmit: (userCredentials: UserCredentials) => void;
+  onSignInFormSubmit: (userCredentials: UserCredentials) => void;
+}
+
+export function AuthForm({ onSignUpFormSubmit, onSignInFormSubmit }: Props) {
+  const { authScreenType, handleClickSignUp, handleClickSignIn } =
+    useAuthForm();
 
   return (
     <div className={s.root}>
@@ -35,10 +36,10 @@ export function AuthForm() {
         </button>
       </div>
       {authScreenType === AuthType.SignUp && (
-        <SignUpForm onSubmit={handleSignUpFormSubmit} />
+        <SignUpForm onSubmit={onSignUpFormSubmit} />
       )}
       {authScreenType === AuthType.SignIn && (
-        <SignInForm onSubmit={handleSignInFormSubmit} />
+        <SignInForm onSubmit={onSignInFormSubmit} />
       )}
     </div>
   );
