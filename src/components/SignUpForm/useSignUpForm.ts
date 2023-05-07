@@ -12,7 +12,7 @@ interface FormValues {
 
 const PASSWORD_MIN_LENGTH = 6;
 
-const { validationErrors } = texts.SignUpPage.SignUpForm;
+const { validationErrors } = texts.SignUp.SignUpForm;
 
 const formSchema = object().shape({
   email: string()
@@ -23,7 +23,7 @@ const formSchema = object().shape({
     .min(PASSWORD_MIN_LENGTH, validationErrors.shortPassword),
   repeatPassword: string().oneOf(
     [ref("password")],
-    texts.SignUpPage.SignUpForm.validationErrors.passwordsMismatch
+    texts.SignUp.SignUpForm.validationErrors.passwordsMismatch
   ),
 });
 

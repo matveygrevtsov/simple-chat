@@ -5,6 +5,7 @@ import { Routes } from "@/constants/navigation";
 import { useRedirect } from "@/hooks/useRedirect";
 import { AuthScreenStatus, useAuthScreen } from "./useAuthScreen";
 import { PreloaderScreen } from "../PreloaderScreen/PreloaderScreen";
+import { AuthErrorMessage } from "../AuthErrorMessage/AuthErrorMessage";
 
 import s from "./AuthScreen.module.css";
 
@@ -35,7 +36,10 @@ export function AuthScreen() {
         onSignInFormSubmit={handleSignInFormSubmit}
       />
       {state.status === AuthScreenStatus.Error && (
-        <div className={s.errorMessage}>{state.errorMessage}</div>
+        <AuthErrorMessage
+          className={s.errorMessage}
+          errorCode={state.errorCode}
+        />
       )}
     </div>
   );

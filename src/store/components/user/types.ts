@@ -3,11 +3,6 @@ export enum UserErrorCode {
   SignInError = "SignInError",
 }
 
-export interface UserErrorData {
-  errorMessage: string;
-  errorCode: UserErrorCode;
-}
-
 export enum UserStatus {
   Authorized = "Authorized",
   UnAuthorized = " UnAuthorized",

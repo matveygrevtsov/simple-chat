@@ -11,7 +11,7 @@ interface FormValues {
 
 const PASSWORD_MIN_LENGTH = 6;
 
-const { validationErrors } = texts.SignInPage.SignInForm;
+const { validationErrors } = texts.SignIn.SignInForm;
 
 const formSchema = object().shape({
   email: string()

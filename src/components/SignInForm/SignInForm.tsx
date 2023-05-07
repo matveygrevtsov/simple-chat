@@ -12,7 +12,7 @@ interface Props {
 
 export const SignInForm: React.FC<Props> = ({ className, onSubmit }) => {
   const { submit, register, formState } = useSignInForm(onSubmit);
-  const { SignInForm } = texts.SignInPage;
+  const { SignInForm } = texts.SignIn;
 
   return (
     <form onSubmit={submit} className={cn(className, s.root)}>
