@@ -1,4 +1,5 @@
 import { Layout } from "@/components/Layout/Layout";
+import { PreloaderScreen } from "@/components/PreloaderScreen/PreloaderScreen";
 import { persistor, store } from "@/store/store";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
@@ -7,15 +8,12 @@ import { PersistGate } from "redux-persist/integration/react";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
-      <PersistGate
-        persistor={persistor}
-        loading={<h2>Загружаем данные из local storage</h2>}
-      >
-        <Layout>
+    <Layout>
+      <Provider store={store}>
+        <PersistGate persistor={persistor} loading={<PreloaderScreen />}>
           <Component {...pageProps} />
-        </Layout>
-      </PersistGate>
-    </Provider>
+        </PersistGate>
+      </Provider>
+    </Layout>
   );
 }

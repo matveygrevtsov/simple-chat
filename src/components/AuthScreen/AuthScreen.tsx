@@ -4,6 +4,7 @@ import { useAppSelector } from "@/store/store";
 import { Routes } from "@/constants/navigation";
 import { useRedirect } from "@/hooks/useRedirect";
 import { AuthScreenStatus, useAuthScreen } from "./useAuthScreen";
+import { PreloaderScreen } from "../PreloaderScreen/PreloaderScreen";
 
 import s from "./AuthScreen.module.css";
 
@@ -24,11 +25,11 @@ export function AuthScreen() {
   }
 
   if (state.status === AuthScreenStatus.Loading) {
-    return <h2>Загрузка...</h2>;
+    return <PreloaderScreen />;
   }
 
   return (
-    <>
+    <div className={s.root}>
       <AuthForm
         onSignUpFormSubmit={handleSignUpFormSubmit}
         onSignInFormSubmit={handleSignInFormSubmit}
@@ -36,6 +37,6 @@ export function AuthScreen() {
       {state.status === AuthScreenStatus.Error && (
         <span>{state.errorMessage}</span>
       )}
-    </>
+    </div>
   );
 }
