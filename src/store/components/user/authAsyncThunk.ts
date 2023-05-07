@@ -1,20 +1,24 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { JsonWebToken, UserAuthData } from "./types";
+import { AuthType, JsonWebToken, UserAuthData } from "./types";
 import axios from "axios";
+import { backendUrl } from "@/constants/constants";
 
 export const authAsyncThunk = createAsyncThunk<JsonWebToken, UserAuthData>(
-  "user/sign-up",
-  async function ({ userCredentials }, thunkAPI) {
+  "user/auth",
+  async function ({ userCredentials, authType }, thunkAPI) {
     try {
+      const url =
+        authType === AuthType.SignIn
+          ? `${backendUrl}/user/sign-in/`
+          : `${backendUrl}/user/sign-up/`;
       const response = await axios<JsonWebToken>({
         method: "post",
-        url: ``,
+        url,
         data: userCredentials,
       });
       return response.data;
     } catch (error: any) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
-    return "";
   }
 );

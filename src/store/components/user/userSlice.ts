@@ -17,6 +17,11 @@ const slice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(authAsyncThunk.rejected, (userState, action) => {
+      return {
+        status: UserStatus.UnAuthorized,
+      };
+    });
     builder.addCase(
       authAsyncThunk.fulfilled,
       (userState, action: PayloadAction<JsonWebToken>) => {

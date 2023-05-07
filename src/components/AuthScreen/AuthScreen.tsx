@@ -14,7 +14,7 @@ export enum AuthScreenType {
 }
 
 export function AuthScreen() {
-  const { state, handleSignUpFormSubmit, handleSignInFormSubmit } =
+  const { state, handleSignUpFormSubmit, handleSignInFormSubmit, handleClick } =
     useAuthScreen();
   const { redirect } = useRedirect();
   const userStore = useAppSelector((state) => state.userStore);
@@ -29,13 +29,13 @@ export function AuthScreen() {
   }
 
   return (
-    <div className={s.root}>
+    <div className={s.root} onClick={handleClick}>
       <AuthForm
         onSignUpFormSubmit={handleSignUpFormSubmit}
         onSignInFormSubmit={handleSignInFormSubmit}
       />
       {state.status === AuthScreenStatus.Error && (
-        <span>{state.errorMessage}</span>
+        <div className={s.errorMessage}>{state.errorMessage}</div>
       )}
     </div>
   );

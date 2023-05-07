@@ -64,5 +64,13 @@ export function useAuthScreen() {
     });
   }
 
-  return { state, handleSignUpFormSubmit, handleSignInFormSubmit };
+  function handleClick() {
+    if (state.status === AuthScreenStatus.Error) {
+      setState({
+        status: AuthScreenStatus.Init,
+      });
+    }
+  }
+
+  return { state, handleSignUpFormSubmit, handleSignInFormSubmit, handleClick };
 }
