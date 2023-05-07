@@ -22,7 +22,7 @@ type State =
     }
   | {
       status: AuthScreenStatus.Error;
-      errorMessage: string;
+      errorCode: string;
     };
 
 export function useAuthScreen() {
@@ -42,10 +42,10 @@ export function useAuthScreen() {
       })
     )
       .unwrap()
-      .catch((error) => {
+      .catch((errorCode) => {
         setState({
           status: AuthScreenStatus.Error,
-          errorMessage: error.message,
+          errorCode,
         });
       });
   }

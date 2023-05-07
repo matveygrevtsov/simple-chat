@@ -1,7 +1,8 @@
+import { FrontendErrors } from "./backendСontract";
+
 export const texts = {
-  SignUpPage: {
+  SignUp: {
     title: "Регистрация",
-    alreadyHasAccountText: "Уже есть аккаунт ? Авторизуйтесь.",
     SignUpForm: {
       labels: {
         email: "Почта",
@@ -18,7 +19,7 @@ export const texts = {
       submitButtonText: "Зарегистрироваться",
     },
   },
-  SignInPage: {
+  SignIn: {
     title: "Авторизоваться",
     SignInForm: {
       labels: {
@@ -33,5 +34,12 @@ export const texts = {
       },
       submitButtonText: "Войти",
     },
+  },
+  AuthErrors: {
+    [FrontendErrors.AccessDenied]:
+      "К сожалению, вы ввели неверный логин или пароль.",
+    [FrontendErrors.UserWithTheSameEmailAlreadyExists]:
+      "К сожалению, вы ввели неверный логин или пароль.",
+    default: "Что-то пошло не так. Пожалуйста, повторите попытку позже.",
   },
 };

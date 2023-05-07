@@ -1,7 +1,7 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import { AuthType, JsonWebToken, UserAuthData } from "./types";
+import { backendUrl } from "@/constants/backendСontract";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { backendUrl } from "@/constants/constants";
 
 export const authAsyncThunk = createAsyncThunk<JsonWebToken, UserAuthData>(
   "user/auth",
@@ -18,7 +18,8 @@ export const authAsyncThunk = createAsyncThunk<JsonWebToken, UserAuthData>(
       });
       return response.data;
     } catch (error: any) {
-      return thunkAPI.rejectWithValue(error);
+      const errorCode = error?.response?.data?.errorCode || "";
+      return thunkAPI.rejectWithValue(errorCode);
     }
   }
 );
