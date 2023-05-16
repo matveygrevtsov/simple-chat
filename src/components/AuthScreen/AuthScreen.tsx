@@ -20,9 +20,9 @@ export function AuthScreen() {
   const { redirect } = useRedirect();
   const userStore = useAppSelector((state) => state.userStore);
 
-  // Если юзер авторизован - редиректим его с этой страницы в личный кабинет.
+  // Если юзер авторизован - редиректим его с этой страницы на страницу чата.
   if (userStore.status === UserStatus.Authorized) {
-    redirect(Routes.Me);
+    redirect(Routes.Chat);
   }
 
   if (state.status === AuthScreenStatus.Loading) {
