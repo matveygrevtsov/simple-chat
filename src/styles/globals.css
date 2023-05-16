@@ -44,3 +44,9 @@ input::-moz-focus-inner {
   border: 0;
   padding: 0;
 }
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}

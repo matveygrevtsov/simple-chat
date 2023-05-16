@@ -13,3 +13,7 @@
 .switchAuthScreenButton {
   cursor: pointer;
 }
+
+.activeButton {
+  color: var(--color-blue);
+}
