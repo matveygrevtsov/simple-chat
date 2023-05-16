@@ -1,13 +1,13 @@
 export enum Routes {
   MainPage = "/",
-  Me = "/me",
+  SearchUsers = "/search-users",
   Chat = "/chat",
 }
 
 export const routesForLoggedInUser = [
   {
-    path: Routes.Me,
-    title: "Мои данные",
+    path: Routes.SearchUsers,
+    title: "Поиск собеседников",
   },
   {
     path: Routes.Chat,

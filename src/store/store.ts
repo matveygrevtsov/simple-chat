@@ -12,14 +12,17 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { usersApi } from "./components/users/usersApi";
 
 const rootReducer = combineReducers({
   userStore: userReducer,
+  [usersApi.reducerPath]: usersApi.reducer,
 });
 
 const persistConfig = {
   key: "user",
   storage,
+  // blacklist: ["usersApi"], // usersApi не будет персиститься
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -31,7 +34,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(usersApi.middleware),
 });
 
 export const persistor = persistStore(store);
