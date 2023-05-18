@@ -1,5 +1,5 @@
 import { AuthType, JsonWebToken, UserAuthData } from "./types";
-import { backendUrl } from "@/constants/backendСontract";
+import { backendUrl } from "../../../constants/backendСontract";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
